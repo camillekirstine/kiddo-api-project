@@ -1,5 +1,16 @@
 ion-header {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+ion-button {
+    --background: none;
+    --box-shadow: none;
+
+}
+
+ion-icon {
+    font-size: 2.5rem !important;
 }
 
 #logo {

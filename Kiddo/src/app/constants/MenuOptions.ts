@@ -12,13 +12,9 @@ export const menuOptions: MenuOptions[] = [
       { text: 'Udendørs', route: ['/all-activities', {category: 'Udendørs'}] },
       { text: 'Sport', route: ['/all-activities', {category: 'Sport'}] },
       { text: 'Se alle', route: '/all-activities' },
-      { text: 'Kalender', route: '/calender' },
     ],
   },
-  {
-    text: 'OPRET AKTIVITET',
-    route: '/add-activity',
-  },
+  
   {
     text: 'KONTAKT',
     route: '/contact',
@@ -27,4 +23,5 @@ export const menuOptions: MenuOptions[] = [
     text: 'OM OS',
     route: '/about',
   },
+
 ];
