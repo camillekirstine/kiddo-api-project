@@ -1,0 +1,14 @@
+<div *ngIf="showSort">
+  <app-generic-modal
+    [modalTitle]="'Sortér'"
+    [buttonText]="'Sortér'"
+    (applyAction)="applySort()"
+    (closeAction)="closeSort()"
+  >
+  <div class="sort-options" *ngFor="let option of SORT_OPTIONS">
+    <ion-radio-group [allowEmptySelection]="true" [(ngModel)]="tempSelectedSortOption" (ionChange)="onModalSortOptionChange($event)">
+        <ion-radio labelPlacement="end" value="{{ option.value }}">{{option.label}}</ion-radio>
+    </ion-radio-group>
+  </div>
+</app-generic-modal>
+</div>

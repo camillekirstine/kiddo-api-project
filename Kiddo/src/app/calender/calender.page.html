@@ -1,0 +1,70 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap"
+  rel="stylesheet"
+/>
+
+<app-navbar></app-navbar>
+
+<ion-content class="calender">
+  <ion-grid>
+    <ion-row>
+      <div>
+        <ion-text class="heading-text ion-text-center">
+          <h1>Kalender</h1>
+        </ion-text>
+        <ion-text>
+          <h2 class="subheader-text ion-text-center">
+            Her kan du se din kalender og kommende begivenheder.
+          </h2>
+        </ion-text>
+      </div>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-datetime
+          [(ngModel)]="selectedDate"
+          (ionChange)="onDateChange($event)"
+          presentation="date"
+        ></ion-datetime>
+        <ion-label *ngIf="activities.length < 1" class="event-box">
+          <p class="event-text">Ingen begivenheder I dag</p>
+        </ion-label>
+        <ion-col size="12" *ngIf="activities.length > 0">
+          <h2 class="event-today">Begivenheder i dag</h2>
+          <div *ngFor="let activity of activities" class="activity-today">
+            <app-card [showImage]="false" [activity]="activity"></app-card>
+          </div>
+        </ion-col>
+      </ion-col>
+
+      <ion-col size="12" size-md="6">
+        <ion-row>
+          <ion-text>
+            <h2 class="upcoming-eventText">Kommende begivenheder</h2>
+          </ion-text>
+        </ion-row>
+        <div *ngFor="let group of groupedActivities | keyvalue">
+          <ion-text>
+            <h2 class="date-text">{{group.key | date: 'dd-MM-yyyy'}}</h2>
+          </ion-text>
+          <ion-row>
+            <ion-col
+              *ngFor="let activity of group.value"
+              size="12"
+              size-md="10"
+              size-xl="6"
+            >
+              <div class="test">
+                <app-card [activity]="activity"></app-card>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-footer-tab></app-footer-tab>
+</ion-content>

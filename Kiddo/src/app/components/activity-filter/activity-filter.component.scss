@@ -1,0 +1,80 @@
+.filter-modal {
+  &__title {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__group {
+    padding: 15px 0px 15px 0px;
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      left: -20px;
+      right: -20px;
+      bottom: 0; 
+      height: 1px;
+      background-color: #ffffff;
+    }
+  }
+
+  &__label {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    font-size: 15px;
+    p{
+      margin: 0;
+    }
+  }
+
+  &__checkbox {
+    margin-right: 10px;
+    background-color: transparent;
+  }
+
+}
+
+ion-checkbox {
+  --size: 18px;
+  --checkbox-background-checked: #0071E3;
+  --checkbox-background: transparent;
+  --checkmark-width: 3;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 1px solid rgb(116, 116, 116);
+}
+
+.checkbox-class{
+  padding-top: 5px;
+  display:flex;
+  align-items: center;
+  font-size: 13px;
+  p{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.checkbox-container{
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+.filter-icon{
+  color: black;
+  --ionicon-stroke-width: 32px;
+}
+
+.caret-icon{
+  font-size: 24px;
+}

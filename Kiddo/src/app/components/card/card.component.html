@@ -1,0 +1,23 @@
+<ion-card>
+  <ion-card-header *ngIf="showImage">
+    <img [src]="activity.imageSrc" height="144" width="300" style="object-fit: cover;" alt=""/>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-card-title color="primary">
+      {{ activity.title }}
+    </ion-card-title>
+    <p>{{ activity.subTitle }}</p>
+    <p><strong>Aldersgruppe: </strong>{{ activity.ageGroup }}</p>
+    <p><strong>Tid: </strong>{{ activity.time }}</p>
+    <p><strong>Dato: </strong>{{activity.date | date: 'dd-MM-yyyy'}}</p>
+    <p><strong>Deltagere: </strong>{{ activity.participants }}</p>
+    <p><strong>Lokation: </strong>{{ activity.location }}</p>
+
+    <div class="button-div">
+      <app-button [routerLink]="['/details', activity.id]" disabled="false" variant="secondary" size="small"
+        >Se aktivitet</app-button
+      >
+    </div>
+  </ion-card-content>
+</ion-card>

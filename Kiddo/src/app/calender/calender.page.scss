@@ -1,0 +1,90 @@
+.calender {
+  ion-datetime {
+    --background: #ffd65a1d;
+    --background-rgb: 255, 241, 242;
+
+    border-radius: 16px;
+    box-shadow: rgba(var(--ion-color-yellow-rgb), 0.3) 0px 10px 15px -3px;
+    margin-inline: 30px;
+    margin-top: 10px;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .subflex-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-box {
+    margin-left: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 30px 12px 30px 12px;
+    justify-content: center;
+    display: flex;
+    border-radius: 30px;
+    margin-top: 2rem;
+    max-width: 320px;
+
+    .event-text {
+      font-weight: 800;
+      font-size: 20px;
+      color: black;
+    }
+  }
+
+  .event-today {
+    padding-left: 50px;
+  }
+}
+.upcoming-eventText {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #43bceb;
+    text-align: center;
+  }
+
+  .date-text{
+    text-align: center;
+  }
+
+.activity-today {
+  max-width: 350px;
+  padding-left: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: black;
+}
+
+.heading-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 4rem;
+  color: #43bceb;
+  text-transform: uppercase;
+}
+
+.subheader-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #3d3d3d;
+  text-transform: uppercase;
+  padding-left: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .upcoming-eventText {
+      text-align: left;
+    }
+    .date-text{
+        text-align: left;
+    }
+  }

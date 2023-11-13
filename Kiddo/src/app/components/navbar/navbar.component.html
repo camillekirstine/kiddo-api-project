@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border ion-padding">
+  <ion-toolbar id="logo" class="center-content">
+    <ion-buttons slot="start" class="img-container" routerLink="/">
+      <ion-img src="/assets/kiddoIcon.png" alt="Kiddo logo"></ion-img>
+    </ion-buttons>
+
+    <ion-buttons slot="end" class="search-bar-container ion-text-start">
+      <app-search-bar></app-search-bar>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="center-content">
+    <ion-title class="ion-hide-lg-down">Velkommen, Bruger!</ion-title>
+    <ion-grid class="search-bar-md">
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-align-items-center" size="12" size-sm="6">
+          <app-search-bar class="ion-text-start"></app-search-bar>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-buttons slot="end" class="navbar buttons-container">
+      <div class="dropdown">
+        <ion-button (click)="presentPopover($event)">
+          Alle aktiviteter
+          <ion-icon [class.rotated]="isRotated" name="caret-down-outline"></ion-icon>
+        </ion-button>
+        <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" PositionAlign="center">
+          <ng-template>
+            <ion-content slot="center">
+              <ion-item [button]="true" routerLink="/all-activities" [queryParams]="{category: 'Kreativt'}">• KREATIVT</ion-item>
+              <ion-item [button]="true" routerLink="/all-activities" [queryParams]="{category: 'Legeaftale'}">• LEGEAFTALE</ion-item>
+              <ion-item [button]="true" routerLink="/all-activities" [queryParams]="{category: 'Gaming'}">• GAMING</ion-item>
+              <ion-item [button]="true" routerLink="/all-activities" [queryParams]="{category: 'Udendørs'}">• UDENDØRS</ion-item>
+              <ion-item [button]="true" routerLink="/all-activities" [queryParams]="{category: 'Sport'}">• SPORT</ion-item>
+              <ion-item [button]="true" routerLink="/all-activities">SE ALLE</ion-item>
+              <ion-item [button]="true" routerLink="/calender">KALENDER</ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </div>
+
+      <ion-button routerLink="/add-activity">Opret aktivitet</ion-button>
+      <ion-button routerLink="/about">Om os</ion-button>
+      <ion-button routerLink="/contact">Kontakt</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

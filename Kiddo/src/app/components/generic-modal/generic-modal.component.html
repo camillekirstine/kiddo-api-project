@@ -1,0 +1,27 @@
+<div (click)="onOverlayClick($event)" class="modal-overlay" role="presentation">
+  <div [ngStyle]="{'background-color': modalBackgroundColor}" class="modal" role="dialog" aria-labelledby="modalTitleId" aria-modal="true">
+    <div class="modal__title" id="modalTitleId">
+      <span>{{ modalTitle }}</span>
+      <ion-icon 
+        class="close-icon"
+        (click)="close()" 
+        name="close-outline" 
+        role="button"
+        aria-label="Close modal"
+        tabindex="0"
+        (keydown.enter)="close()"
+      ></ion-icon>
+    </div>
+    <ng-content></ng-content>
+    <div class="modal__button-group" *ngIf="showButton">
+      <app-button 
+        expand="full" 
+        variant="secondary" 
+        (click)="apply()"
+        aria-label="Apply changes"
+      >
+        {{ buttonText }}
+      </app-button>
+    </div>
+  </div>
+</div>

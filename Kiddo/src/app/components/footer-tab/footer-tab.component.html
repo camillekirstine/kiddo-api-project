@@ -1,0 +1,55 @@
+<ion-footer class="mobile-tab">
+  <div class="menu-container">
+    <div class="menu-options" [@slideInOut]="menuOpen ? true : false" appClickOutSide (clickOutside)="handleClickOutside()">
+      <!-- Main Menu Options -->
+      <ng-container *ngIf="!showSubMenu">
+        <button
+          *ngFor="let option of menuOptions"
+          (click)="option.subMenu ? toggleSubMenu($event) : null"
+          [routerLink]="option.subMenu ? null : [option.route]"
+        >
+          {{ option.text }}
+          <ion-icon *ngIf="option.icon" [name]="option.icon"></ion-icon>
+        </button>
+      </ng-container>
+
+      <!-- Sub Menu Options -->
+      <ng-container *ngIf="showSubMenu">
+        <button (click)="toggleSubMenu($event)">
+          ALLE AKTIVITETER
+          <ion-icon name="caret-up-sharp"></ion-icon>
+        </button>
+        <button
+          class="submenu-buttons"
+          *ngFor="let subOption of menuOptions[0].subMenu"
+          [routerLink]="isArray(subOption.route) ? [subOption.route[0]] : [subOption.route]"
+          [queryParams]="isArray(subOption.route) ? subOption.route[1] : null"
+        >
+          {{ subOption.text }}
+        </button>
+      </ng-container>
+    </div>
+
+    <div class="menu-trigger">
+      <div class="icon-and-button" (click)="toggleMenu($event);">
+        <button>
+          <ion-icon
+            [@iconRotate]="menuOpen ? true : false"
+            size="large"
+            name="{{ menuOpen ? 'close-outline' : 'add-circle-outline' }}"
+          ></ion-icon>
+          <p>{{ menuOpen ? "Se mindre" : "Se mere" }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-footer>
+
+<ion-footer class="ion-no-border">
+    <div class="desktop-footer">
+      <div class="desktop-options">
+      <p>Copyright © Codesquad</p>
+      <p>CVR: 12345678</p>
+      </div>
+    </div>
+</ion-footer>

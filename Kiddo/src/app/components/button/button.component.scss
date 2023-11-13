@@ -1,0 +1,27 @@
+ion-button.primary {
+  --background: var(--ion-color-primary);
+  --color: white;
+  --background-hover: var(--ion-color-primary-shade);
+  --background-activated: var(--ion-color-primary-tint);
+}
+
+ion-button.secondary {
+  --background: var(--ion-color-secondary);
+  --color: black;
+  --background-hover: var(--ion-color-secondary-hover);
+  --background-activated: var(--ion-color-secondary-pressed);
+  --background-focused: var(--ion-color-secondary-hover)
+}
+
+ion-button.tertiary {
+  --background: var(--ion-color-danger);
+  --color: black;
+  --background-hover: var(--ion-color-danger-shade);
+  --background-activated: var(--ion-color-danger-tint);
+}
+ion-button {
+  --box-shadow: 0;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  text-transform: none;
+}

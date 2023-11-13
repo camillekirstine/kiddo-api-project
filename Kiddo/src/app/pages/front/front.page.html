@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<ion-content>
+  <ion-grid class="ion-no-padding">
+
+    <!-- TITLE AND TEXT AREA -->
+    <ion-row class="ion-padding ion-margin text-area">
+      <ion-col sizeMd="auto" sizeLg="7">
+        <ion-text class="ion-text-center ion-text-md-center ion-text-lg-start">
+          <h1>KIDDO</h1>
+          <h2>ONLINE AKTIVITETS PLANLÆGNING</h2>
+        </ion-text>
+        <ion-text>
+          <p>
+            KIDDO er til dig der ønsker at samle alt dit barns planlægning på ét sted. Vores platform tilbyder
+            en lang række forskellige aktiviteter, som er arrangeret, oprettet og bliver afholdt af andre forældre. 
+          </p>
+          <p>
+            Find nemt og enkelt aktiviteter i dit lokalområde, med jævnaldrene børn og
+             meget mere. Dyk ned i en verden af sjov og muligheder!
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- CARD SECTION -->
+    <div class="cardArea">
+      <ion-grid class="grid-container" [fixed]="true">
+        <ion-row class="ion-padding-top">
+          <ion-col class="ion-text-center ion-margin-bottom">
+            <h3>Nyeste aktiviteter</h3>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row class="activity-list ion-justify-content-center">
+          <ion-col
+          size="12"
+          size-md="6"
+          size-lg="4"
+          size-xl="4"
+          *ngFor="let activity of originalActivities.slice(0,3);">
+
+            <div class="card-container ion-padding-bottom">
+              <app-card [activity]="activity"></app-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+    <!--
+    <div class="cardArea">
+      <ion-row class="ion-padding-top">
+        <ion-col class="ion-text-center">
+          <h3>Nyeste aktiviteter</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin ion-justify-content-center">
+        <ion-col size="auto" sizeMd="4" sizeLg="3" class="ion-padding ion-no-margin" 
+        *ngFor="let activity of originalActivities.slice(0,3);">
+          <div class="card-container ion-padding-bottom">
+            <app-card [activity]="activity"></app-card>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </div>
+    -->
+  </ion-grid>
+
+  <app-footer-tab></app-footer-tab>
+</ion-content>
+

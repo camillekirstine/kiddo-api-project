@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<ion-content>
+
+  <ion-grid class="grid-container" [fixed]="true">
+    <ion-row class="header-section">
+      <ion-col size="12">
+        <h1>RESULTAT</h1>
+        <p>
+          HER KAN DU SE DINE SØGERESULTATER
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="activity-list">
+      <ion-col
+        size="12"
+        size-md="6"
+        size-lg="4"
+        size-xl="3"
+        *ngFor="let activity of activities"
+      >
+        <div class="card-container">
+          <app-card [activity]="activity"></app-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<app-footer-tab></app-footer-tab>

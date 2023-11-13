@@ -1,0 +1,80 @@
+.desktop-footer{
+  display: none;
+}
+
+.mobile-tab{
+  position: fixed;
+  bottom:0;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-options {
+  position: absolute;
+  bottom: 100%;
+  background-color: #43bceb;
+  width: 100%;
+  z-index: 1;
+  button {
+    width: 100%;
+    border-bottom: solid 1px;
+    background-color: transparent;
+    padding: 20px 0;
+    font-size: 14px;
+    color: white;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.menu-trigger {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  background-color: #43bceb;
+  button {
+    background-color: #43bceb;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 14px;
+    border: none;
+    color: white;
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.icon-and-button {
+  width: fit-content;
+}
+
+.submenu-buttons{
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px){
+  .mobile-tab {
+    display: none;
+  }
+  .desktop-footer{
+    display:contents;
+    p{
+      color: white;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 300;
+    }
+  }
+  .desktop-options{
+    background-color: #43bceb;
+    padding: 20px 0 20px 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+

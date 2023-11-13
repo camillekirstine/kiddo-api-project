@@ -1,0 +1,133 @@
+<ion-content color="primary" fullscreen="true">
+  <ion-toolbar>
+    
+      <h1>Tilmeld dit barn</h1>
+    
+    <ion-button (click)="cancel()" slot="end">
+      <ion-icon name="close-outline" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+
+  
+  <form class="form" [formGroup]="attendForm">
+    <ion-grid [fixed]="true">
+
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" sizeLg="5" class="ion-margin-top">
+          <ion-label>Forældres navn</ion-label>
+          <ion-item fill="outline" shape="round">
+            <ion-input
+            aria-label="Forældres navn"
+            placeholder="Fornavn Efternavn"
+            formControlName="parentName"
+            >
+            </ion-input>
+
+            <ng-container>
+              <ion-icon
+              *ngIf="attendForm.get('parentName')?.valid && attendForm.get('parentName')?.touched"
+              name="checkmark-circle"
+              slot="end"
+              color="success"
+              class="valid-checkmark-icon"
+              ></ion-icon>
+            </ng-container>
+           
+          </ion-item>
+        </ion-col>
+
+        
+
+        <ion-col size="12" sizeLg="5" class="ion-margin-top">
+          <ion-label>Barns navn</ion-label>
+          <ion-item fill="outline" shape="round">
+            <ion-input
+            aria-label="Barns navn"
+            placeholder="Fornavn Efternavn"
+            formControlName="childName"
+            >
+            </ion-input>
+
+            <ng-container>
+              <ion-icon
+              *ngIf="attendForm.get('childName')?.valid && attendForm.get('childName')?.touched"
+              name="checkmark-circle"
+              slot="end"
+              color="success"
+              class="valid-checkmark-icon"
+              ></ion-icon>
+            </ng-container>
+          </ion-item>
+
+         
+        
+        </ion-col>
+
+        <ion-col size="12" sizeLg="5" class="ion-margin-top">
+          <ion-label>E-mail</ion-label>
+          <ion-item fill="outline" shape="round">
+            <ion-input
+            aria-label="E-mail"
+            placeholder="mail@mail.com"
+            formControlName="email"
+            >
+            </ion-input>
+
+            <ng-container>
+              <ion-icon
+              *ngIf="attendForm.get('email')?.valid && attendForm.get('email')?.touched"
+              name="checkmark-circle"
+              slot="end"
+              color="success"
+              class="valid-checkmark-icon"
+              ></ion-icon>
+            </ng-container>
+          </ion-item>
+
+         
+        </ion-col>
+
+
+        <ion-col size="12" sizeLg="5" class="ion-margin-top">
+          <ion-label>Telefon</ion-label>
+          <ion-item fill="outline" shape="round">
+            <ion-input
+            aria-label="Telefonnummer"
+            placeholder="12345678"
+            formControlName="phone"
+            >
+            </ion-input>
+            <ng-container>
+              <ion-icon
+              *ngIf="attendForm.get('email')?.valid && attendForm.get('email')?.touched"
+              name="checkmark-circle"
+              slot="end"
+              color="success"
+              class="valid-checkmark-icon"
+              ></ion-icon>
+            </ng-container>
+            
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-padding">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button (click)="submit()" [disabled]="!attendForm.valid" class="ion-text-center">
+            <app-button  variant="secondary" size="small">
+              <p>Tilmeld</p>
+            </app-button>
+          </ion-button>
+          
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content> 
+
+<app-generic-modal [modalBackgroundColor]="'white'" [showButton]="false" *ngIf="successModalVisible" (closeAction)="closeSuccessModal()">
+  <app-succes-modal (closeRequest)="closeSuccessModal()"></app-succes-modal>
+  
+</app-generic-modal>
+

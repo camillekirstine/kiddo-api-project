@@ -1,0 +1,92 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+
+}
+
+ul, ol {
+	margin: 2px 10px 2px 10px;
+	padding: 0;
+	list-style-position: inside;
+}
+
+li {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* ion-content{
+  --padding-top: 20px;
+  --background: var(--ion-color-base);
+} */
+
+ion-img {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+}
+
+.title-container {
+  max-width: 1550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 0 15px 0;
+  margin-bottom: 50px;
+}
+
+//'sm': '640px',
+@media (min-width: 576px) {
+  ion-img {
+    height: 500px;
+  }
+}
+
+// 'md': '768px',
+@media (min-width: 768px) {
+
+}
+
+// 'lg': '1024px',
+@media (min-width: 992px) {
+  ion-img {
+    height: 615px;
+  }
+  .title-container {
+    text-align: start;
+  }
+
+  .about-container p {
+    padding-left: 15px;
+  }
+
+  
+}
+
+// 'xl': '1280px',
+@media (min-width: 1200px) {
+
+}

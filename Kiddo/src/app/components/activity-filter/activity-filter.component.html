@@ -1,0 +1,50 @@
+<div *ngIf="showFilter">
+  <app-generic-modal
+    [modalTitle]="'Filtrér'"
+    [buttonText]="'Filtrér'"
+    (applyAction)="applyFilters()"
+    (closeAction)="closeFilter()"
+    role="dialog"
+    aria-labelledby="filterModalTitle"
+    aria-describedby="filterModalDescription"
+  >
+    <section>
+      <div 
+          *ngFor="let group of filterGroups; let i = index" 
+          class="filter-modal__group"
+          role="group"
+          attr.aria-label="filterGroupLabel{{i}}"
+      >
+        <div 
+            (click)="group.collapsed = !group.collapsed"
+            (keydown.enter)="group.collapsed = !group.collapsed"
+            class="filter-modal__label"
+            tabindex="0"
+            id="filterGroupLabel{{i}}"
+        >
+          <p>{{ group.label }}</p>
+          <ion-icon
+            name="{{ group.collapsed ? 'caret-down-sharp' : 'caret-up-sharp' }}"
+            class="caret-icon"
+            aria-hidden="true"
+          ></ion-icon>
+        </div>
+        <div class="checkbox-container" *ngIf="!group.collapsed">
+          <div *ngFor="let key of group.keys; let j = index" class="checkbox-class">
+            <ion-checkbox
+              tabindex="0"
+              labelPlacement="end"
+              class="filter-modal__checkbox"
+              type="checkbox"
+              [(ngModel)]="filters[group.filterType][key]"
+              id="checkbox{{i}}{{j}}"
+              name="checkbox{{i}}{{j}}"
+            >
+              <p>{{ key }}</p>
+            </ion-checkbox>
+          </div>
+        </div>
+      </div>
+    </section>
+  </app-generic-modal>
+</div>
