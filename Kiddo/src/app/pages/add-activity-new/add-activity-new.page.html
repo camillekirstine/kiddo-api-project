@@ -1,0 +1,60 @@
+<ion-content>
+  <app-navbar></app-navbar>
+  <ion-grid>
+    <ion-row class="ion-padding ion-margin text-area">
+      <ion-col class="ion-text-center">
+        <ion-text>
+          <h1>AKTIVITETER</h1>
+        </ion-text>
+        <ion-text>
+          <p>
+            HER KAN DU FINDE EN OVERSIGT OVER ALLE AKTIVITETER OPRETTET I VORES
+            KATALOG
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!--
+    <ion-row class="activity-list">
+      <ion-col
+        size="12"
+        size-md="6"
+        size-lg="4"
+        size-xl="3"
+        *ngFor="let activity of activities">
+
+        <div class="card-container">
+          <app-card></app-card>
+        </div>
+
+      </ion-col>
+    </ion-row>
+    -->
+
+    <ion-list>
+        <ion-item *ngFor="let activity of activities">
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="12">
+                  <img src="./assets/activity-images/{{ activity.image }}" alt="Activity Image">
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <h1><strong>{{ activity.title }}</strong></h1>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="2">
+                  {{activity.description}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-item>
+    </ion-list>
+
+  </ion-grid>
+</ion-content>

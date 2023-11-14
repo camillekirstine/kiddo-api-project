@@ -50,7 +50,12 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
+  },  {
+    path: 'add-activity-new',
+    loadChildren: () => import('./pages/add-activity-new/add-activity-new.module').then( m => m.AddActivityNewPageModule)
   },
+
+
 ];
 
 @NgModule({

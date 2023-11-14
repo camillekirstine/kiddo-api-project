@@ -4,6 +4,7 @@ import { inputFields } from 'src/app/constants/AddInputFields';
 import { errorMessages } from 'src/app/constants/AddInputFieldsErrorMessages';
 import { ErrorMessages } from 'src/app/types/ErrorMessage';
 
+
 @Component({
   selector: 'app-add-activity',
   templateUrl: './add-activity.page.html',
