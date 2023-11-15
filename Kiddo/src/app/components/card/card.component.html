@@ -1,17 +1,17 @@
 <ion-card>
   <ion-card-header *ngIf="showImage">
-    <img [src]="activity.imageSrc" height="144" width="300" style="object-fit: cover;" alt=""/>
+    <img [src]="activity.image" height="144" width="300" style="object-fit: cover;" alt=""/>
   </ion-card-header>
 
   <ion-card-content>
     <ion-card-title color="primary">
       {{ activity.title }}
     </ion-card-title>
-    <p>{{ activity.subTitle }}</p>
-    <p><strong>Aldersgruppe: </strong>{{ activity.ageGroup }}</p>
+    <p>{{ activity.subtitle }}</p>
+    <p><strong>Aldersgruppe: </strong>{{ activity.agegroup }}</p>
     <p><strong>Tid: </strong>{{ activity.time }}</p>
     <p><strong>Dato: </strong>{{activity.date | date: 'dd-MM-yyyy'}}</p>
-    <p><strong>Deltagere: </strong>{{ activity.participants }}</p>
+    <p><strong>Deltagere: </strong>{{ activity.particapants }}</p>
     <p><strong>Lokation: </strong>{{ activity.location }}</p>
 
     <div class="button-div">

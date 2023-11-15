@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { mockActivities } from 'src/app/constants/MockActivities';
 import { FilterSortService } from 'src/app/services/filter-sort.service';
 import { ActivityCard } from 'src/app/types/ActivityCard';
 import {
@@ -13,6 +12,8 @@ import {
   Filters,
   Region,
 } from 'src/app/types/Filtering';
+import { ActivitiesService } from 'src/app/services/activitiesservice.service';
+import { Subscription } from 'rxjs';
 
 type QueryParams = {
   category?: Category;
@@ -26,9 +27,10 @@ type QueryParams = {
   styleUrls: ['./all-activities.page.scss'],
 })
 export class AllActivitiesPage implements OnInit {
-  originalActivities: ActivityCard[] = mockActivities;
-  backupActivities: ActivityCard[] = [...this.originalActivities];
-  sortedActivities: ActivityCard[] = [...this.backupActivities];
+  activitiySubscription: Subscription = new Subscription;
+  originalActivities: ActivityCard[] = [];
+  backupActivities: ActivityCard[] = [];
+  sortedActivities: ActivityCard[] = [];
 
   activeFilterLabels: ActivityFilterType[] = [];
   currentFilters: Filters | null = null;
@@ -39,17 +41,36 @@ export class AllActivitiesPage implements OnInit {
   constructor(
     private filterSortService: FilterSortService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private activitiesService: ActivitiesService
   ) {
     this.filterGroups = filterSortService.getFilterGroups();
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.handleQueryParams(params);
-    });
+    try {
+      this.activitiySubscription = this.activitiesService.getActivities()
+        .subscribe((activities: ActivityCard[]) => {
+          this.originalActivities = activities;
+          this.backupActivities = [...this.originalActivities];
+          this.sortedActivities = [...this.backupActivities];
+        }, (error: any) => {
+          console.error('Failed to fetch activities:', error);
+          // Handle the error here
+        });
+    } catch (error) {
+      console.error('Failed to fetch activities:', error);
+      // Handle the error here
+    }
   }
-
+  
+  // Don't forget to unsubscribe in ngOnDestroy() to avoid memory leaks
+  ngOnDestroy(): void {
+    if (this.activitiySubscription) {
+      this.activitiySubscription.unsubscribe();
+    }
+  }
+  
   private handleQueryParams(params: QueryParams): void {
     this.currentFilters = this.filterSortService.initializeFilters();
 
@@ -110,7 +131,7 @@ export class AllActivitiesPage implements OnInit {
   }
 
   onResetFilters() {
-    this.originalActivities = [...this.sortedActivities];
+    this.originalActivities = [...this.originalActivities];
     this.currentFilters = null;
     this.activeFilterLabels = [];
   }

@@ -84,7 +84,7 @@ export class FilterSortService {
 
     return activities.filter((activity) => {
       const categoryMatch = filters.categories[activity.category];
-      const ageGroupMatch = filters.ageGroups[activity.ageGroup];
+      const ageGroupMatch = filters.ageGroups[activity.agegroup];
       const regionMatch = filters.regions[activity.region];
       return categoryMatch || ageGroupMatch || regionMatch;
     });
