@@ -6,11 +6,11 @@
       <ion-col sizeMd="auto" sizeLg="7" class="ion-text-center ion-text-md-start">
         <ion-text>
           <h1>{{activity.title}}</h1>
-          <h2>{{activity.subTitle}}</h2>
+          <h2>{{activity.subtitle}}</h2>
         </ion-text>
         <ion-text>
           <p>
-            <strong>Aldersgruppe:</strong> {{activity.ageGroup}} 
+            <strong>Aldersgruppe:</strong> {{activity.agegroup}} 
           </p>
         </ion-text>
       </ion-col>
@@ -25,7 +25,7 @@
 
               <div class="imgContainer">
                 
-                <img src={{activity.imageSrc}}>
+                <img src={{activity.image}}>
 
                 <div class="ion-padding">
                   <p><strong>Dato og tid: </strong>{{activity.time}} {{activity.date | date: 'dd-MM-yyyy'}}</p>
@@ -50,8 +50,8 @@
                 </p>
                 
                 <div class="information">
-                  <p><strong>Oprettet af:</strong> {{activity.name}}</p>
-                  <p><strong>Max deltagere:</strong> {{activity.participants}}</p>
+                  <p><strong>Oprettet af:</strong></p>
+                  <p><strong>Max deltagere:</strong> {{activity.particapants}}</p>
                 </div>
                 
                 <div class="ion-text-end">
@@ -78,8 +78,8 @@
                 </p>
                 
                 <div class="information ion-padding-bottom">
-                  <p><strong>Oprettet af: </strong>{{activity.name}}</p>
-                  <p><strong>Max deltagere: </strong>{{activity.participants}}</p>
+                  <p><strong>Oprettet af: </strong></p>
+                  <p><strong>Max deltagere: </strong>{{activity.particapants}}</p>
                 </div>
               
                 <app-button (click)="presentModal()" disabled="false" variant="secondary" size="small" class="ion-text-center">

@@ -1,19 +1,22 @@
+import { Time } from "@angular/common";
 import { AgeGroup, Category, Region } from "./Filtering";
 
 export interface ActivityCard {
-    id: number;
-    imageSrc: string;
-    name: string;
-    email: string;
-    phone: string;
-    title: string;
-    subTitle: string;
-    description: string;
-    ageGroup: AgeGroup;
-    time: string;
-    date: Date;
-    participants: number;
-    location: string;
-    category: Category;
-    region: Region;
+    image: any;
+    id: number,
+    userId: number,
+    title: string,
+    subtitle: string,
+    description: string,
+    agegroup: AgeGroup,
+    time: string,
+    date: Date,
+    particapants: number,
+    location: string,
+    category: Category,
+    region: Region,
+    createdAt: string,
+    updatedAt: string,
+
+
 }

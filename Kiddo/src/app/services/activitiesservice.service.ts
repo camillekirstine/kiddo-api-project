@@ -1,28 +1,43 @@
 import { Injectable } from '@angular/core';
-import { mockActivities } from 'src/app/constants/MockActivities';
-import { ActivityCard } from 'src/app/types/ActivityCard';
+import { HttpClient } from '@angular/common/http';
+import { ActivityCard } from '../types/ActivityCard';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActivitiesserviceService {
-  Activity: ActivityCard[] = mockActivities;
+export class ActivitiesService {
+  private apiUrl = 'http://localhost:8080/activities/get'
+  private activities: ActivityCard[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  public getActivites(): any {
-    const activitiesObs = new Observable(observer => {
-      setTimeout(() => {
-        observer.next(this.Activity);
-      }, 1000);
-    });
-
-    return activitiesObs;
+  fetchActivities(): void {
+    this.http
+      .get<ActivityCard[]>('http://localhost:8000/activities/get')
+      .subscribe(
+        (response) => {
+          this.activities = response; // Store the fetched activities in the service
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
+  getActivities(): Observable<ActivityCard[]> {
+    return this.http.get<ActivityCard[]>(this.apiUrl);
+  }
+
+  getActivityById(id: string): Observable<ActivityCard> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<ActivityCard>(url);
+  }
+
+
   public fetchActivityOnDate(date: string){
-    const activitiyOnDate = mockActivities.filter(activity => this.formatDate(activity.date) === date);
+    const activitiyOnDate = this.activities.filter(activity => this.formatDate(activity.date) === date);
     return activitiyOnDate;
   }
 
@@ -30,3 +45,5 @@ export class ActivitiesserviceService {
     return date.toISOString().split('T')[0];
   }
 }
+
+ 

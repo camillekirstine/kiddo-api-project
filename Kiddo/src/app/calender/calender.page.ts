@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivitiesserviceService } from '../services/activitiesservice.service';
+import { ActivitiesService } from '../services/activitiesservice.service';
 import { FilterSortService } from '../services/filter-sort.service';
-import { mockActivities } from '../constants/MockActivities';
 import { ActivityCard } from '../types/ActivityCard';
 
 @Component({
@@ -15,7 +14,7 @@ export class CalenderPage implements OnInit {
   groupedActivities: { [key: string]: ActivityCard[] } = {};
   selectedDate: any;
   constructor(
-    private activityService: ActivitiesserviceService,
+    private activitiesService: ActivitiesService,
     private filterSortService: FilterSortService
   ) {
     this.selectedDate = new Date().toISOString().split('T')[0];
@@ -23,7 +22,7 @@ export class CalenderPage implements OnInit {
 
   onDateChange(event: CustomEvent) {
     this.selectedDate = event.detail.value.split('T')[0];
-    const activitesOnDate = this.activityService.fetchActivityOnDate(
+    const activitesOnDate = this.activitiesService.fetchActivityOnDate(
       this.selectedDate
     );
     this.activities = activitesOnDate;
@@ -31,12 +30,12 @@ export class CalenderPage implements OnInit {
 
   sortActivitiesByDate() {
     const groupedActivities = this.filterSortService.sortActivities(
-      mockActivities,
+      this.activities,
       'date'
     );
     this.sortedActivities = groupedActivities;
     this.sortedActivities.forEach((activity) => {
-      const dateString = this.activityService.formatDate(activity.date);
+      const dateString = this.activitiesService.formatDate(activity.date);
       if (!this.groupedActivities[dateString]) {
         this.groupedActivities[dateString] = [];
       }
@@ -45,7 +44,7 @@ export class CalenderPage implements OnInit {
   }
 
   ngOnInit() {
-    const activityOnDate = this.activityService.fetchActivityOnDate(
+    const activityOnDate = this.activitiesService.fetchActivityOnDate(
       this.selectedDate
     );
     this.activities = activityOnDate;
