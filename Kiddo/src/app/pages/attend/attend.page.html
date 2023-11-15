@@ -1,14 +1,151 @@
 <ion-content color="primary" fullscreen="true">
-  <ion-toolbar>
+  <ion-toolbar class="ion-text-center">
     
       <h1>Tilmeld dit barn</h1>
     
-    <ion-button (click)="cancel()" slot="end">
+    <ion-button class="close-btn" (click)="cancel()" slot="end">
       <ion-icon name="close-outline" size="large"></ion-icon>
     </ion-button>
   </ion-toolbar>
 
   
+  <form class="form" [formGroup]="attendForm">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col
+          size="12"
+          size-sm="6"
+          size-lg="6"
+          *ngFor="let input of InputFields"
+        >
+          <ion-label
+            [ngClass]="getInputStatus(input.model, 'label')"
+            class="label"
+            position="stacked"
+            >{{input.label}}</ion-label
+          >
+
+          <ng-container [ngSwitch]="input.inputType">
+            <!-- Select Type -->
+            <ion-item
+              lines="none"
+              class="select-container"
+              *ngSwitchCase="'select'"
+              [ngClass]="getInputStatus(input.model, 'select')"
+            >
+              <ion-select
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                placeholder="{{input.placeholder}}"
+                interface="popover"
+                class="select"
+                [attr.aria-label]="'Selection for {{input.label}}'"
+              >
+              </ion-select>
+              <ion-icon
+                *ngIf="attendForm.get(input.model)?.valid && attendForm.get(input.model)?.touched"
+                name="checkmark-circle"
+                slot="end"
+                color="success"
+                class="valid-checkmark-icon"
+              >
+              </ion-icon>
+            </ion-item>
+
+            <!-- Input Type -->
+            <ion-item
+              *ngSwitchDefault
+              lines="none"
+              class="{{input.class}}"
+              [ngClass]="getInputStatus(input.model, 'input')"
+            >
+              <ion-input
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                type="{{input.inputType}}"
+                placeholder="{{input.placeholder}}"
+                [attr.aria-label]="'Input for {{input.label}}'"
+              ></ion-input>
+              <ion-icon
+                *ngIf="attendForm.get(input.model)?.valid && attendForm.get(input.model)?.touched"
+                name="checkmark-circle"
+                slot="end"
+                color="success"
+                class="valid-checkmark-icon"
+              >
+              </ion-icon>
+            </ion-item>
+
+            <!-- Text Area Type -->
+            <ion-item
+              lines="none"
+              class="{{input.class}}"
+              *ngSwitchCase="'textarea'"
+            >
+              <ion-textarea
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                [autoGrow]="true"
+                placeholder="{{input.placeholder}}"
+                [attr.aria-label]="'Textarea for {{input.label}}'"
+              ></ion-textarea>
+            </ion-item>
+          </ng-container>
+
+          <!-- Error Messages -->
+          <div
+            *ngIf="attendForm.get(input.model)?.invalid && attendForm.get(input.model)?.touched && !attendForm.get(input.model)?.pending"
+          >
+            <ng-container *ngFor="let error of errorMessages[input.model]">
+              <div class="error-label-container">
+                <ion-label
+                  *ngIf="attendForm.get(input.model)?.hasError(error.type)"
+                  class="error-label"
+                  position="stacked"
+                  role="alert"
+                >
+                  {{ error.message }}
+                </ion-label>
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+
+        <!--
+        <ion-col class="ion-align-self-end">
+          <div class="button-div">
+            <ion-button
+              (click)="submit()"
+              shape="round"
+              slot="end"
+              size="small"
+              [disabled]="!attendForm.valid"
+            >
+              Tilmeld
+            </ion-button>
+          </div>
+        </ion-col>
+        -->
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-end">
+          <ion-button
+            (click)="submit()"
+            shape="round"
+            size="small"
+            [disabled]="!attendForm.valid"
+        >
+          Tilmeld
+          </ion-button>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+  <!--
   <form class="form" [formGroup]="attendForm">
     <ion-grid [fixed]="true">
 
@@ -124,6 +261,7 @@
 
     </ion-grid>
   </form>
+  -->
 </ion-content> 
 
 <app-generic-modal [modalBackgroundColor]="'white'" [showButton]="false" *ngIf="successModalVisible" (closeAction)="closeSuccessModal()">
