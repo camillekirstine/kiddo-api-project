@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { inputFields } from 'src/app/constants/AddInputFields';
 import { errorMessages } from 'src/app/constants/AddInputFieldsErrorMessages';
 import { ErrorMessages } from 'src/app/types/ErrorMessage';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -37,6 +37,36 @@ export class DummypagePage implements OnInit {
     this.activityForm = this.formBuilder.group(this.formControlsConfig);
   }
 
+  makeHttpRequest(): void {
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    const params = {
+      title: this.activityForm.value.title,
+      subtitle: this.activityForm.value.subtitle,
+      description: this.activityForm.value.description,
+      agegroup: this.activityForm.value.ageGroup,
+      time: this.activityForm.value.time,
+      date: this.activityForm.value.date, 
+      participants: this.activityForm.value.participants,
+      location: this.activityForm.value.location,
+      category: this.activityForm.value.category,
+      region: this.activityForm.value.region,
+      createdAt: this.activityForm.value.name,
+      updatedAt: this.activityForm.value.email,
+      image: this.activityForm.value.phone,
+    };
+
+    console.log('Form Values:', this.activityForm.value);
+    this.http.post('http://localhost:8080/activities/add', params).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  
+  }
+
   showSuccessModal() {
     this.successModalVisible = true;
   }
@@ -54,35 +84,11 @@ export class DummypagePage implements OnInit {
 
   submit() {
     if (this.activityForm.valid) {
-      this.showSuccessModal();        
+      this.showSuccessModal();
+      this.makeHttpRequest();        
       this.saveData();
       this.activityForm.reset();
-  
-      const params = {
-        title: this.activityForm.value.title,
-        subtitle: this.activityForm.value.subtitle,
-        description: this.activityForm.value.description,
-        agegroup: this.activityForm.value.ageGroup,
-        time: this.activityForm.value.time,
-        date: this.activityForm.value.date, 
-        participants: this.activityForm.value.participants,
-        location: this.activityForm.value.location,
-        category: this.activityForm.value.category,
-        region: this.activityForm.value.region,
-        createdAt: this.activityForm.value.name,
-        updatedAt: this.activityForm.value.email,
-        image: this.activityForm.value.phone,
-      };
-  
-      console.log('Form Values:', this.activityForm.value);
-      this.http.post('http://localhost:8080/activities/add', params).subscribe(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+      
     } else {
       this.activityForm.markAllAsTouched();
     }
