@@ -31,7 +31,7 @@ export class ActivitiesService {
   }
 
   getActivityById(id: string): Observable<ActivityCard> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = 'http://localhost:8080/activities/:id';
     return this.http.get<ActivityCard>(url);
   }
 

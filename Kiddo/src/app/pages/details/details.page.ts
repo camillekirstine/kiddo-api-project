@@ -35,8 +35,9 @@ export class DetailsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.activitiesService.getActivityById(this.activityId!).subscribe((activity: ActivityCard) => {
-      this.activity = activity;
+    this.activitiesService.getActivities().subscribe((activities) => {
+      this.shownActivity = activities;
+      this.fetchActivityOnId(this.activityId!);
     });
   }
 
