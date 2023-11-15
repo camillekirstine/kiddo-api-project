@@ -2,37 +2,30 @@ import { FILTER_DEFINITIONS } from "./FilterDefinitions";
 
 export const inputFields = [
     {
-      label: 'Navn',
-      placeholder: 'Jens',
-      inputType: 'text',
-      class: 'roundedInput',
-      model: 'name',
-      formControlName: 'name'
-    },
-    {
-      label: 'Email',
-      placeholder: 'email@email.dk',
-      inputType: 'text',
-      class: 'roundedInput',
-      model: 'email',
-      formControlName: 'email'
-    },
-    {
-      label: 'Telefon',
-      placeholder: '88888888',
-      inputType: 'text',
-      class: 'roundedInput',
-      model: 'phone',
-      formControlName: 'phone'
-    },
-    {
-      label: 'Aktivitets navn',
-      placeholder: 'F.eks. Fodbold',
+      label: 'Titel',
+      placeholder: 'Eks. Fodbold',
       inputType: 'text',
       class: 'roundedInput',
       model: 'title',
       formControlName: 'title'
     },
+    {
+      label: 'Undertitel',
+      placeholder: 'Eks. Fodbold i parken',
+      inputType: 'text',
+      class: 'roundedInput',
+      model: 'subtitle',
+      formControlName: 'subtitle'
+    },
+    {
+      label: 'Max. deltagere',
+      placeholder: 'Eks. 5',
+      inputType: 'number',
+      class: 'roundedInput',
+      model: 'participants',
+      formControlName: 'participants'
+    },
+   
     {
       label: 'Aldersgruppe',
       placeholder: 'Vælg aldersgruppe',
@@ -92,5 +85,12 @@ export const inputFields = [
       model: 'description',
       class: 'roundedInput',
       formControlName: 'description'
-    }
+    },
+    {
+      label: 'Billede',
+      placeholder: 'F.eks. Fodbold',
+      inputType: 'file',
+      model: 'image',
+      formControlName: 'image'
+    },
   ];

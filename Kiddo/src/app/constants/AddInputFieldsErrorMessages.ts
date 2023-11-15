@@ -1,19 +1,19 @@
 import { ErrorMessages } from "../types/ErrorMessage";
 
 export const errorMessages: ErrorMessages = {
-  name: [
-    { type: 'required', message: 'Indtast dit navn' },
-    { type: 'minlength', message: 'Dit navn skal være minimum 2 karakterer.' },
+  title: [
+    { type: 'required', message: 'Indtast venligst titel' },
+    { type: 'minlength', message: 'Din titel skal være minimum 2 karakterer.' },
   ],
-  email: [
-    { type: 'required', message: 'Indtast din email ' },
-    { type: 'email', message: 'Ugyldig email, tjek evt formatet og prøv igen' },
+  subtitle: [
+    { type: 'required', message: 'Indtast venligst undertitel' },
+
   ],
-  phone: [
-    { type: 'required', message: 'Indtast telefonnummer' },
-    { type: 'pattern', message: 'Dit nummer skal være på 8 tal' },
+  participants: [
+    { type: 'required', message: 'Indtast antal deltagere' },
+    { type: 'maxlength', message: 'Antal deltagere kan max være 2 tal' },
   ],
-  title: [{ type: 'required', message: 'Indtast Aktivitets navn' }],
+  
   ageGroup: [{ type: 'required', message: 'Vælg en aldersgruppe' }],
   category: [{ type: 'required', message: 'Vælg en kategori' }],
   location: [{ type: 'required', message: 'Indtast lokation' }],
@@ -21,4 +21,5 @@ export const errorMessages: ErrorMessages = {
   date: [{ type: 'required', message: 'Vælg en dato' }],
   time: [{ type: 'required', message: 'Vælg et tidspunkt' }],
   description: [{ type: 'required', message: 'Skriv en kort beskrivelse' }],
+  image: [{ type: 'required', message: 'Upload et billede' }],
 };
