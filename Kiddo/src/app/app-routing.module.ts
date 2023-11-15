@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'add-activity-new',
     loadChildren: () => import('./pages/add-activity-new/add-activity-new.module').then( m => m.AddActivityNewPageModule)
   },
+  {
+    path: 'dummypage',
+    loadChildren: () => import('./pages/dummypage/dummypage.module').then( m => m.DummypagePageModule)
+  },
 
 
 ];

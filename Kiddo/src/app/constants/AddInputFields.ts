@@ -7,6 +7,7 @@ export const inputFields = [
       inputType: 'text',
       class: 'roundedInput',
       model: 'name',
+      formControlName: 'name'
     },
     {
       label: 'Email',
@@ -14,6 +15,7 @@ export const inputFields = [
       inputType: 'text',
       class: 'roundedInput',
       model: 'email',
+      formControlName: 'email'
     },
     {
       label: 'Telefon',
@@ -21,6 +23,7 @@ export const inputFields = [
       inputType: 'text',
       class: 'roundedInput',
       model: 'phone',
+      formControlName: 'phone'
     },
     {
       label: 'Aktivitets navn',
@@ -28,6 +31,7 @@ export const inputFields = [
       inputType: 'text',
       class: 'roundedInput',
       model: 'title',
+      formControlName: 'title'
     },
     {
       label: 'Aldersgruppe',
@@ -35,7 +39,8 @@ export const inputFields = [
       options: FILTER_DEFINITIONS.ageGroups.values,
       inputType: 'select',
       class: 'roundedInput',
-      model: 'ageGroup'
+      model: 'ageGroup',
+      formControlName: 'ageGroup'
     },
     {
       label: 'Kategori',
@@ -44,6 +49,7 @@ export const inputFields = [
       inputType: 'select',
       class: 'roundedInput',
       model: 'category',
+      formControlName: 'category'
     },
     {
       label: 'Lokation',
@@ -51,6 +57,7 @@ export const inputFields = [
       inputType: 'text',
       class: 'roundedInput',
       model: 'location',
+      formControlName: 'location'
     },
     {
       label: 'Region',
@@ -58,7 +65,8 @@ export const inputFields = [
       inputType: 'select',
       class: 'roundedInput',
       options: FILTER_DEFINITIONS.regions.values,
-      model: 'region'
+      model: 'region',
+      formControlName: 'region'
     },
     {
       label: 'Dato',
@@ -66,6 +74,8 @@ export const inputFields = [
       inputType: 'date',
       class: 'dateTimeInput',
       model: 'date',
+      formControlName: 'date'
+
     },
     {
       label: 'Tid',
@@ -73,12 +83,14 @@ export const inputFields = [
       inputType: 'time',
       class: 'dateTimeInput',
       model: 'time',
+      formControlName: 'time'
     },
     {
       label: 'Beskrivelse',
       inputType: 'textarea',
       placeholder: 'Beskrivelse af aktivitet',
       model: 'description',
-      class: 'roundedInput'
+      class: 'roundedInput',
+      formControlName: 'description'
     }
   ];

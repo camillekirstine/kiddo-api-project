@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+<app-localnav></app-localnav>
+<ion-content>
+  <ion-row class="ion-padding ion-margin text-area">
+    <ion-col class="ion-text-center">
+      <ion-text>
+        <h1>Opret en aktivitet</h1>
+      </ion-text>
+      <ion-text>
+        <p>HER HAR DU MULIGHED FOR AT OPRETTE EN NY AKTIVITET</p>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="activityForm"
+  (ngSubmit)="submit()">
+
+  <div *ngFor="let field of inputFields">
+    <div [ngClass]="getInputStatus(field.model, 'input')">
+      <label for="{{field.model}}">{{field.label}}</label>
+      <input [formControlName]="field.model" 
+            [id]="field.model" [type]="field.inputType"
+            [placeholder]="field.placeholder" [class]="field.class">
+    </div>
+  </div>
+  <div class="button-div">
+    <ion-button
+      (click)="submit()"
+      shape="round"
+      slot="end"
+      size="small"
+      [disabled]="!activityForm.valid"
+    >
+      Opret aktivitet
+    </ion-button>
+  </div>
+
+  </form>
+
+  <!-- <form class="form" [formGroup]="activityForm">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col
+          size="12"
+          size-sm="6"
+          size-lg="6"
+          *ngFor="let input of inputFields"
+        >
+          <ion-label
+            [ngClass]="getInputStatus(input.model, 'label')"
+            class="label"
+            position="stacked"
+            >{{input.label}}</ion-label
+          >
+
+          <ng-container [ngSwitch]="input.inputType">
+            Select Type -->
+            <!-- <ion-item
+              lines="none"
+              class="select-container"
+              *ngSwitchCase="'select'"
+              [ngClass]="getInputStatus(input.model, 'select')"
+            >
+              <ion-select
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                placeholder="{{input.placeholder}}"
+                interface="popover"
+                class="select"
+                [attr.aria-label]="'Selection for {{input.label}}'"
+              >
+                <ion-select-option
+                  *ngFor="let option of input.options"
+                  [value]="option"
+                >
+                  {{ option }}
+                </ion-select-option>
+              </ion-select>
+              <ion-icon
+                *ngIf="activityForm.get(input.model)?.valid && activityForm.get(input.model)?.touched"
+                name="checkmark-circle"
+                slot="end"
+                color="success"
+                class="valid-checkmark-icon"
+              >
+              </ion-icon>
+            </ion-item> --> 
+
+            <!-- Input Type -->
+            <!-- <ion-item
+              *ngSwitchDefault
+              lines="none"
+              class="{{input.class}}"
+              [ngClass]="getInputStatus(input.model, 'input')"
+            >
+              <ion-input
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                type="{{input.inputType}}"
+                placeholder="{{input.placeholder}}"
+                [attr.aria-label]="'Input for {{input.label}}'"
+              ></ion-input>
+              <ion-icon
+                *ngIf="activityForm.get(input.model)?.valid && activityForm.get(input.model)?.touched"
+                name="checkmark-circle"
+                slot="end"
+                color="success"
+                class="valid-checkmark-icon"
+              >
+              </ion-icon>
+            </ion-item> -->
+
+            <!-- Text Area Type -->
+            <!-- <ion-item
+              lines="none"
+              class="{{input.class}}"
+              *ngSwitchCase="'textarea'"
+            >
+              <ion-textarea
+                (ionBlur)="onBlur(input.model)"
+                formControlName="{{input.model}}"
+                [autoGrow]="true"
+                placeholder="{{input.placeholder}}"
+                [attr.aria-label]="'Textarea for {{input.label}}'"
+              ></ion-textarea>
+            </ion-item>
+          </ng-container> -->
+
+          <!-- Error Messages -->
+          <!-- <div
+            *ngIf="activityForm.get(input.model)?.invalid && activityForm.get(input.model)?.touched && !activityForm.get(input.model)?.pending"
+          >
+            <ng-container *ngFor="let error of errorMessages[input.model]">
+              <div class="error-label-container">
+                <ion-label
+                  *ngIf="activityForm.get(input.model)?.hasError(error.type)"
+                  class="error-label"
+                  position="stacked"
+                  role="alert"
+                >
+                  {{ error.message }}
+                </ion-label>
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col class="ion-align-self-end">
+          <div class="button-div">
+            <ion-button
+              (click)="submit()"
+              shape="round"
+              slot="end"
+              size="small"
+              [disabled]="!activityForm.valid"
+            >
+              Opret aktivitet
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> -->
+  <app-footer-tab></app-footer-tab>
+</ion-content>
+<app-generic-modal
+  [modalBackgroundColor]="'white'"
+  [showButton]="false"
+  *ngIf="successModalVisible"
+  (closeAction)="closeSuccessModal()"
+>
+  <app-succes-modal (closeRequest)="closeSuccessModal()"></app-succes-modal>
+</app-generic-modal>
