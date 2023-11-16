@@ -22,4 +22,22 @@ export const errorMessages: ErrorMessages = {
   time: [{ type: 'required', message: 'Vælg et tidspunkt' }],
   description: [{ type: 'required', message: 'Skriv en kort beskrivelse' }],
   image: [{ type: 'required', message: 'Upload et billede' }],
+
+  parentName: [
+    { type: 'required', message: 'Indtast venligst dit navn' },
+    { type: 'minlength', message: 'Navn skal være minimum 2 karakterer.' },
+  ],
+
+  childName: [
+    { type: 'required', message: 'Indtast venligst dit barns navn' },
+    { type: 'minlength', message: 'Navn skal være minimum 2 karakterer.' },
+  ],
+
+  email: [
+    { type: 'required', message: 'Indtast venligst din email' },
+  ],
+
+  phone: [
+    { type: 'required', message: 'Indtast venligst dit telefon nummer' },
+  ],
 };

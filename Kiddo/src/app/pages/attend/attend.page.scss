@@ -12,6 +12,16 @@ ion-content {
     color: var(--ion-color-primary);
 }
 
+ion-toolbar {
+    position: relative;
+}
+
+.close-btn {
+    --background: ;
+    position: absolute;
+    right: 0;
+}
+
 ion-item {
 --inner-border-width: 0;
 --border-radius: 40px;
@@ -21,8 +31,6 @@ padding-top: 2px;
 ion-label {
     font-weight: bold;
     padding-left: 8px;
-    
-    
 }
 
 app-button p {
@@ -62,8 +70,95 @@ ion-input {
     font-size: smaller;
 }
 
+.valid-checkmark-icon {
+    margin-left: 5px;  // Adjust as needed
+}
 
-@media (min-width: 766px) {
+.roundedInput {
+    --border-color: #B1B1B1;
+    --border-radius: 25px;
+    --border-width: 1px;
+    --background: #f8f9fa;
+    width: 100%;
+}
+
+.input-success {
+    --border-color: #04FF1D;
+}
+  
+.input-error {
+    --border-color: red;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.label-success{
+    color: black;
+}
+
+.label-error{
+    color: red;
+}
+  
+ion-button {
+    --background: #ffd55a;
+    --color: black;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    --box-shadow: none;
+    text-transform: none;
+}
+
+ion-select{
+    --background: #f8f9fa;
+    --border-radius: 25px;
+    --background: transparent;
+    --background-focused: transparent;
+    --background-hover: var(--background);
+    --background-activated: var(--background);
+    &::part(container){
+      width: 100%;
+    }
+}
+
+.select-container{
+    background-color: #f8f9fa;
+    border: 1px solid;
+    border-color: #B1B1B1;
+    border-radius: 25px;
+}
+
+.select-success {
+    border-color: #04FF1D !important;
+}
+  
+.select-error {
+    border-color: red !important;
+}
+
+ion-select::part(placeholder) {
+    font-size: 12px;
+}
+
+ion-select::part(text) {
+    font-size: 12px;
+}
+
+.error-label{
+    color:red;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/*.submit-btn {
+    position: absolute;
+    right: 0;
+}*/
+
+/* @media (min-width: 766px) {
    
     ion-label {
         font-size: large;
@@ -97,5 +192,4 @@ ion-input {
     ion-input {
         font-size: medium;
     }
-
-}
+} */
