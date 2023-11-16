@@ -55,7 +55,7 @@
                 </div>
                 
                 <div class="ion-text-end">
-                  <app-button (click)="presentModal()" disabled="false" variant="secondary" size="small">
+                  <app-button (click)="presentModal(activityId)" disabled="false" variant="secondary" size="small">
                     <p>Tilmeld</p>
                   </app-button>
                 </div>
@@ -82,7 +82,7 @@
                   <p><strong>Max deltagere: </strong>{{activity.particapants}}</p>
                 </div>
               
-                <app-button (click)="presentModal()" disabled="false" variant="secondary" size="small" class="ion-text-center">
+                <app-button (click)="presentModal(activityId)" disabled="false" variant="secondary" size="small" class="ion-text-center">
                 <p>Tilmeld</p>
                 </app-button>
               </ion-card-content>

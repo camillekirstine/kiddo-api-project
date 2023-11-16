@@ -23,30 +23,41 @@ export class DetailsPage implements OnInit {
     private modalCtrl: ModalController,
   ) {}
 
-  activityId = this.activatedRoute.snapshot.paramMap.get('id');
+  activityId: number;
 
-  fetchActivityOnId(id: string) {
+  fetchActivityOnId(id: number) {
     if (id) {
-      const activity = this.shownActivity.find((activity) => activity.id === +id);
+      const activity = this.shownActivity.find(activity => activity.id === id);
       if (activity) {
         this.activity = activity;
       }
     }
+    this.activityId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    console.log(this.activityId);
+
   }
 
   ngOnInit() {
-    this.activitiesService.getActivities().subscribe((activities) => {
-      this.shownActivity = activities;
-      this.fetchActivityOnId(this.activityId!);
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.activityId = id ? Number(id) : undefined;
+      this.activitiesService.getActivities().subscribe(activities => {
+        this.shownActivity = activities;
+        this.fetchActivityOnId(this.activityId);
+      });
     });
   }
+  
 
-  async presentModal() {
+  async presentModal(activityId: number) {
     const modal = await this.modalCtrl.create({
       component: AttendPage,
-      componentProps: this.activity,
+      componentProps: {
+        activityId: activityId
+      },
     });
 
-    modal.present();
+
+    await modal.present();
   }
 }

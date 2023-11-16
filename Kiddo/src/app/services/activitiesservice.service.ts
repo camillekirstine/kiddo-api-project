@@ -30,7 +30,7 @@ export class ActivitiesService {
     return this.http.get<ActivityCard[]>(this.apiUrl);
   }
 
-  getActivityById(id: string): Observable<ActivityCard> {
+  getActivityById(id: number): Observable<ActivityCard> {
     const url = 'http://localhost:8080/activities/:id';
     return this.http.get<ActivityCard>(url);
   }

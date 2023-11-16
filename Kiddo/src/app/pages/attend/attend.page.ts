@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputFields } from 'src/app/constants/attendInputFields';
 import { errorMessages } from 'src/app/constants/AddInputFieldsErrorMessages';
 import { ErrorMessages } from 'src/app/types/ErrorMessage';
-import { ActionSheetController, AlertController, ModalController } from '@ionic/angular';
+import { ActionSheetController, AlertController, ModalController, NavParams } from '@ionic/angular';
 import { SuccesModalComponent } from 'src/app/components/succes-modal/succes-modal.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-attend',
@@ -26,31 +27,44 @@ formControlsConfig = {
   email: ['', Validators.required],
   phone: ['', Validators.required],
 };
+  activityId: number;
+ 
 
   constructor(private formBuilder: FormBuilder,
               private modalCtrl: ModalController,
-              private http: HttpClient) {}
+              private http: HttpClient,
+              private route: ActivatedRoute,
+              private navParams: NavParams) {
+                this.activityId = Number(this.navParams.get('activityId'));
+                console.log(this.activityId);
+                
+                
+              }
 
+
+              
   ngOnInit() {
     this.prepareFormValidation();
     this.attendForm = this.formBuilder.group(this.formControlsConfig);
+    
+
   }
 
   makeHttpRequest(): void {
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    const now = new Date();
+    const now = new Date();  
 
     const params = {
+      actId: Number(this.navParams.get('activityId')),
       parentName: this.attendForm.value.parentName,
       childName: this.attendForm.value.childName,
       email: this.attendForm.value.email,
       phone: this.attendForm.value.phone,
       createdAt: now,
-      updatedAt: now,
     }; 
 
     console.log('Form Values:', this.attendForm.value); 
-    this.http.post('http://localhost:8080/attending/add', params).subscribe(
+    this.http.post('http://localhost:8080/attending/add/:id', params).subscribe(
       (response) => {
         console.log(response);
       },
