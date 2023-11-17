@@ -43,26 +43,25 @@ export class AttendinglistComponent  implements OnInit {
     private router: Router
     ) { }
 
+    attendingActivities: ActivityCard[] = [];
+
   ngOnInit() {
     this.activitiesService.fetchActivities();
   }
 
-  makeHttpRequest(): void {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    const now = new Date();
-
-    this.http.delete('http://localhost:8080/activities/delete/:id').subscribe(
-      (response) => {
-        console.log(response);
+  makeHttpRequest(activityId: number): void {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  
+    this.http.delete(`http://localhost:8080/activities/delete/${activityId}`, { headers }).subscribe(
+      () => {
+        console.log('Deleted successfully');
+        // Update the originalActivities array to remove the deleted activity
+        this.attendingActivities = this.attendingActivities.filter(activity => activity.id !== activityId);
       },
       (error) => {
         console.error(error);
+        // Handle the error here
       }
     );
-  }
-
-  onDelete(): void {
-    this.makeHttpRequest();  
-  }
-
+  } 
 }
