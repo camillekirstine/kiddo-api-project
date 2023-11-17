@@ -14,6 +14,7 @@ import { ActivitySortComponent } from '../components/activity-sort/activity-sort
 import { SuccesModalComponent } from '../components/succes-modal/succes-modal.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LocalnavComponent } from '../components/localnav/localnav.component';
+import { ListComponent } from '../components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LocalnavComponent } from '../components/localnav/localnav.component';
     ActivitySortComponent,
     SuccesModalComponent,
     NavbarComponent,
-    LocalnavComponent
+    LocalnavComponent,
+    ListComponent,
   ],
   imports: [CommonModule, IonicModule, RouterModule, FormsModule],
   exports: [
@@ -41,7 +43,8 @@ import { LocalnavComponent } from '../components/localnav/localnav.component';
     ActivitySortComponent,
     SuccesModalComponent,
     NavbarComponent,
-    LocalnavComponent
+    LocalnavComponent,
+    ListComponent,
   ],
 })
 export class SharedModule {}

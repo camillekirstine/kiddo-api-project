@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item class="item-background-color" lines="none">
+    <ion-label>
+      <h2>{{ activity.title }}</h2>
+      <p>Time: {{ activity.time }}</p>
+      <p>Date: {{activity.date | date: 'dd-MM-yyyy'}}</p>
+      <p>Location: {{ activity.location }}</p>
+    </ion-label>
+
+    <!--
+    <ion-buttons slot="end">
+      <ion-button (click)="editItem(item)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="deleteItem(item)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    -->
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon color="primary" name="create-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="onDelete()">
+        <ion-icon color="danger" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>
