@@ -5,3 +5,9 @@ ion-icon {
 .item-background-color:hover{
   --ion-item-background:#eeeeeec4;
 }
+
+ion-list {
+  padding: 0 0 0 0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,50 @@
+<ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="ion-text-center">Rediger profil</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item class="ion-margin-top">
+        <ion-input
+          label="Opdater navn"
+          labelPlacement="stacked"
+          type="text"
+          placeholder="Fornavn efternavn"
+          [(ngModel)]="name"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input
+          label="Opdater addresse"
+          labelPlacement="stacked"
+          type="text"
+          placeholder="Addresse"
+          [(ngModel)]="name"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input
+          label="Opdater nummer"
+          labelPlacement="stacked"
+          type="text"
+          placeholder="Nummer"
+          [(ngModel)]="name"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-row class="ion-justify-content-between ion-margin-top">
+        <ion-buttons>
+          <ion-button variant="secondary" (click)="cancel()">Aflys</ion-button>
+        </ion-buttons>
+  
+        <ion-buttons>
+          <ion-button variant="secondary" (click)="confirm()">
+            Bekræft
+          </ion-button>
+        </ion-buttons>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>

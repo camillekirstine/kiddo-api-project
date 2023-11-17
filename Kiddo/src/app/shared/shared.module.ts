@@ -15,6 +15,7 @@ import { SuccesModalComponent } from '../components/succes-modal/succes-modal.co
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LocalnavComponent } from '../components/localnav/localnav.component';
 import { ListComponent } from '../components/list/list.component';
+import { EditUserModalComponent } from '../components/edit-user-modal/edit-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ListComponent } from '../components/list/list.component';
     NavbarComponent,
     LocalnavComponent,
     ListComponent,
+    EditUserModalComponent,
   ],
   imports: [CommonModule, IonicModule, RouterModule, FormsModule],
   exports: [
@@ -45,6 +47,7 @@ import { ListComponent } from '../components/list/list.component';
     NavbarComponent,
     LocalnavComponent,
     ListComponent,
+    EditUserModalComponent,
   ],
 })
 export class SharedModule {}

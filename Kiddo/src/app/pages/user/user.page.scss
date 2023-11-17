@@ -35,116 +35,14 @@ img {
 	height: auto;
 }
 
-ion-label > span {
-  color: #eb445a;
-}
-
-ion-img {
-  width: auto;
-  height: 175px;
-  object-fit: cover;
-}
-
-.cards {
-  margin-bottom: 5rem;
-}
-
-/* ion-content{
-  --padding-top: 20px;
-  --background: var(--ion-color-base);
-} */
-
-ion-item {
-  --padding-start: 0;
-
-}
-
 ion-card {
   height: auto;
   border-radius: 15px;
 }
 
-ion-textarea {
-  font-size: 15px;
-  line-height: 1.5;
-  min-height: 130px;
-  width: 100%;
-}
-
-ion-icon {
-  padding: 8px;
-  border: 1px solid lightgray;
+#userImg {
+  height: 175px;
+  width: 175px;
+  object-fit: cover;
   border-radius: 100%;
-  margin-right: 15px;
-  min-width: 24px;
-}
-
-.person-circle-outline {
-  min-height: 50px;
-  min-width: 50px;
-}
-
-.contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 0 15px 0;
-}
-
-.contact-info {
-  display: grid;
-  gap: 10px;
-}
-
-
-.desktop-view {
-  display: none;
-}
-
-.mobile-view {
-  display: block;
-}
-
-//'sm': '640px',
-@media (min-width: 576px) {
-}
-
-// 'md': '768px',
-@media (min-width: 768px) {
-  ion-card {
-    height: 430px;
-    border-radius: 15px;
-  }
-  .desktop-view {
-    display: block;
-  }
-  .mobile-view {
-    display: none;
-  }
-  .text-area {
-    padding-left: 50px;
-  }
-}
-
-// 'lg': '1024px',
-@media (min-width: 992px) {
-  .title-container {
-    text-align: start;
-  }
-  .button-signup {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-  }
-  .button-login {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-  }
-}
-
-
-
-// 'xl': '1280px',
-@media (min-width: 1200px) {
-
 }
