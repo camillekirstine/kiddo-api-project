@@ -16,6 +16,90 @@
     </ion-row>
   </ion-grid>
 
+  <ion-grid class="title-container">
+    <ion-row class="ion-padding ion-margin text-area">
+      <ion-col>
+        <ion-text class="ion-text-center ion-text-md-center">
+          <h1>LOGIN</h1>
+        </ion-text>
+        <ion-text class="ion-text-center ion-text-md-center">
+          <p>
+            LOGIN ELLER TILMELD DIG HER, FOR AT KUNNE TILMELDE DIG TIL EN AKTIVITET.
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Login -->
+  <ion-grid class="contact-container">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card class="cards">
+          <ion-card-content>
+            <ion-list>
+
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input type="text" name="navn"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Adgangskode<span> *</span></ion-label>
+                <ion-input type="email" name="email" required></ion-input>
+              </ion-item>
+
+
+            </ion-list>
+
+            <div class="button-login">
+              <app-button disabled="false" variant="secondary" size="default" id="open-toast" expand="block">Login</app-button>
+              <ion-toast trigger="open-toast" message="Du nu signed up!" [duration]="5000"></ion-toast>
+            </div>
+
+          </ion-card-content>
+
+          <!-- Sign up -->
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-card class="cards">
+          <ion-card-content>
+            <ion-list>
+
+              <ion-item>
+                <ion-label position="floating">Navn</ion-label>
+                <ion-input type="text" name="navn"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Email<span> *</span></ion-label>
+                <ion-input type="email" name="email" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Telefon<span> *</span></ion-label>
+                <ion-input type="email" name="email" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Adresse<span> *</span></ion-label>
+                <ion-input type="email" name="email" required></ion-input>
+              </ion-item>
+
+
+            </ion-list>
+
+            <div class="button-signup">
+              <app-button disabled="false" variant="secondary" size="small" id="open-toast" expand="block">Opret bruger</app-button>
+              <ion-toast trigger="open-toast" message="Du nu logget ind!" [duration]="5000"></ion-toast>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <app-footer-tab></app-footer-tab>
 </ion-content>
 
