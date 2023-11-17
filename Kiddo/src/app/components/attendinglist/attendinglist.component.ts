@@ -1,22 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivityCard } from '../../types/ActivityCard';
 import { ActivitiesService } from 'src/app/services/activitiesservice.service';
+
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivityService } from 'src/app/services/activity.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { YourActivitiesService } from 'src/app/services/youractivities.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'app-attendinglist',
+  templateUrl: './attendinglist.component.html',
+  styleUrls: ['./attendinglist.component.scss'],
 })
 
-export class ListComponent  implements OnInit {
-[x: string]: any;
- 
-  originalActivities: ActivityCard[] = [];
-  attendingActivities: ActivityCard[] = [];
+export class AttendinglistComponent  implements OnInit {
   @Input() activity: ActivityCard = {
     id: 0,
     userId: 0,
@@ -38,7 +35,7 @@ export class ListComponent  implements OnInit {
   @Input() showImage: boolean = true;
 
   constructor(
-    private youActivities: YourActivitiesService,
+    private activitiesService: ActivitiesService,
     private http: HttpClient,
 
     private activityService: ActivityService,
@@ -46,17 +43,26 @@ export class ListComponent  implements OnInit {
     private router: Router
     ) { }
 
-    id: number;
-
   ngOnInit() {
-    this.youActivities.fetchActivities();
+    this.activitiesService.fetchActivities();
   }
 
-  
-  
- 
-  
-  
+  makeHttpRequest(): void {
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    const now = new Date();
 
+    this.http.delete('http://localhost:8080/activities/delete/:id').subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  onDelete(): void {
+    this.makeHttpRequest();  
+  }
 
 }

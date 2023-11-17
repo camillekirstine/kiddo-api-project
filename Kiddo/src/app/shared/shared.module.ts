@@ -16,6 +16,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { LocalnavComponent } from '../components/localnav/localnav.component';
 import { ListComponent } from '../components/list/list.component';
 import { EditUserModalComponent } from '../components/edit-user-modal/edit-user-modal.component';
+import { AttendinglistComponent } from '../components/attendinglist/attendinglist.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditUserModalComponent } from '../components/edit-user-modal/edit-user-
     LocalnavComponent,
     ListComponent,
     EditUserModalComponent,
+    AttendinglistComponent
   ],
   imports: [CommonModule, IonicModule, RouterModule, FormsModule],
   exports: [
@@ -48,6 +50,7 @@ import { EditUserModalComponent } from '../components/edit-user-modal/edit-user-
     LocalnavComponent,
     ListComponent,
     EditUserModalComponent,
+    AttendinglistComponent
   ],
 })
 export class SharedModule {}

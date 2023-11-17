@@ -41,7 +41,7 @@
 
       <ion-col size="12" sizeMd="6" class="ion-padding">
         <h1 class="ion-text-center">Tilmeldte aktiviteter</h1>
-        <app-list *ngFor="let activity of originalActivities" [activity]="activity"></app-list>
+        <app-attendinglist *ngFor="let activity of attendingActivities" [activity]="activity"></app-attendinglist>
       </ion-col>
     </ion-row>
   </ion-grid>
