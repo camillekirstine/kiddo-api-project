@@ -58,21 +58,7 @@ export class UserPage implements OnInit {
   }
   
   
-  makeHttpRequest(activityId: number): void {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
-    this.http.delete(`http://localhost:8080/activities/delete/${activityId}`, { headers }).subscribe(
-      () => {
-        console.log('Deleted successfully');
-        // Update the originalActivities array to remove the deleted activity
-        this.originalActivities = this.originalActivities.filter(activity => activity.id !== activityId);
-      },
-      (error) => {
-        console.error(error);
-        // Handle the error here
-      }
-    );
-  }
+ 
   
   
 
