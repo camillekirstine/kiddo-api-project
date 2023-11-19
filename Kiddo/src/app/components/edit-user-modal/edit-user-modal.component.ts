@@ -12,7 +12,11 @@ export class EditUserModalComponent  implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
 
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
-  name: string;
+  userName: string; 
+  userEmail: string; 
+  userPhone: string; 
+  userAddress: string; 
+  userPicture: any;
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -21,7 +25,11 @@ export class EditUserModalComponent  implements OnInit {
   confirm() {
     const apiUrl = 'http://localhost:8080/users/update/:id'; 
     const params = {
-      userName: this.name,
+      userName: this.userName,
+      userEmail: this.userEmail,
+      userPhone: this.userPhone,
+      userAddress: this.userAddress,
+      userPicture: this.userPicture
       
     }; 
 
@@ -34,7 +42,7 @@ export class EditUserModalComponent  implements OnInit {
       }
     ); 
 
-    this.modal.dismiss(this.name, 'confirm');
+    this.modal.dismiss('confirm');
   }
 
   onWillDismiss(event: Event) {

@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { AttendingService } from 'src/app/services/attendingservice.service';
 import { YourActivitiesService } from 'src/app/services/youractivities.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from 'src/app/services/userservice.service';
+import { UserInfo } from 'src/app/types/UserInfo';
 
 @Component({
   selector: 'app-user',
@@ -13,16 +15,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserPage implements OnInit {
   activitiySubscription: Subscription = new Subscription;
   attendingSub: Subscription = new Subscription;
+  userSub: Subscription = new Subscription;
   originalActivities: ActivityCard[] = [];
   attendingActivities: ActivityCard[] = [];
+  userInfo: UserInfo[] = [];
 
   
-
-
   constructor(
     private yourActivities: YourActivitiesService,
     private attendingService: AttendingService,
     private http: HttpClient,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -54,16 +57,19 @@ export class UserPage implements OnInit {
       // Handle the error here
     }
 
+    try {
+      this.userSub = this.userService.getUser().subscribe(
+        (userInfo: UserInfo[]) => {
+          this.userInfo = userInfo;
+        },
+        (error: any) => {
+          console.error('error');
+        }
+      );
+    } catch (error) {
+        console.error('error');
+    }
+
 
   }
-  
-  
- 
-  
-  
-
-}
-
-
-
-
+}  

@@ -3,35 +3,39 @@
 
 <ion-content>
   <ion-grid class="ion-no-padding">
-    <ion-row>
-      <ion-col size="12" class="ion-padding">
-        <h1 class="ion-text-center">Din Profil</h1>
-        <ion-card class="ion-margin">
-          <ion-card-content>
-            <ion-row class="ion-justify-content-center ion-margin ion-align-items-center">
+    <div class="userBox" *ngFor="let user of userInfo">
+      <ion-row>
+        <ion-col size="12" class="ion-padding">
+          <h1 class="ion-text-center">Din Profil</h1>
+          <ion-card class="ion-margin">
+            <ion-card-content>
+              <ion-row class="ion-justify-content-center ion-margin ion-align-items-center">
 
-              <ion-col size="12" class="ion-text-center">
-                <ion-row class="ion-justify-content-center">
-                  <img id="userImg" src="../../../assets/userimage.jpg" alt="Profilbillede">
-                </ion-row>
-                <div class="ion-margin">
-                  <ion-card-title class="ion-padding">Hanne Sørensen</ion-card-title>
-                  <ion-card-subtitle>Addresse</ion-card-subtitle>
-                  <ion-card-subtitle>Telefon</ion-card-subtitle>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row class="ion-justify-content-center">
-                <app-button id="open-modal" variant="secondary" expand="block">
-                  Rediger profil
-                </app-button>
-                <app-edit-user-modal></app-edit-user-modal>
-            </ion-row>
-          </ion-card-content>
+                <ion-col size="12" class="ion-text-center">
+                  <ion-row class="ion-justify-content-center">
+                    <img id="userImg" src="../../../assets/userimage.jpg" alt="Profilbillede">
+                  </ion-row>
+                  <div class="ion-margin">
+                    <ion-card-title class="ion-padding">{{user.userName}}</ion-card-title>
+                    <ion-card-subtitle><strong>Addresse:</strong> {{user.userAddress}}</ion-card-subtitle>
+                    <ion-card-subtitle><strong>E-mail:</strong> {{user.userEmail}}</ion-card-subtitle>
+                    <ion-card-subtitle><strong>Telefon:</strong> {{user.userPhone}}</ion-card-subtitle>
+                    
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-justify-content-center">
+                  <app-button id="open-modal" variant="secondary" expand="block">
+                    Rediger profil
+                  </app-button>
+                  <app-edit-user-modal></app-edit-user-modal>
+              </ion-row>
+            </ion-card-content>
 
-        </ion-card>
-      </ion-col>
-    </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
 
     <ion-row>
       <ion-col size="12" sizeMd="6" class="ion-padding">

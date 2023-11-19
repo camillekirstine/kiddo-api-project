@@ -11,8 +11,8 @@
           label="Opdater navn"
           labelPlacement="stacked"
           type="text"
-          placeholder="Fornavn efternavn"
-          [(ngModel)]="name"
+          placeholder="Dit fulde navn"
+          [(ngModel)]="userName"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-margin-top">
@@ -20,17 +20,35 @@
           label="Opdater addresse"
           labelPlacement="stacked"
           type="text"
-          placeholder="Addresse"
-          [(ngModel)]="name"
+          placeholder="Din addresse"
+          [(ngModel)]="userAddress"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-margin-top">
         <ion-input
-          label="Opdater nummer"
+          label="Opdater telefonnummer"
           labelPlacement="stacked"
           type="text"
-          placeholder="Nummer"
-          [(ngModel)]="name"
+          placeholder="Dit telefonnummer"
+          [(ngModel)]="userPhone"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input
+          label="Opdater e-mail"
+          labelPlacement="stacked"
+          type="text"
+          placeholder="Din e-mail"
+          [(ngModel)]="userEmail"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-top">
+        <ion-input
+          label="Opdater profilbillede"
+          labelPlacement="stacked"
+          type="file"
+          placeholder="Dit telefonnummer"
+          [(ngModel)]="userPicture"
         ></ion-input>
       </ion-item>
   
