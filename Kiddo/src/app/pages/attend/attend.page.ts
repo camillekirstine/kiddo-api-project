@@ -51,11 +51,11 @@ formControlsConfig = {
   }
 
   makeHttpRequest(): void {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const now = new Date();  
 
     const params = {
-      actId: Number(this.navParams.get('activityId')),
+      actId: this.activityId,
       parentName: this.attendForm.value.parentName,
       childName: this.attendForm.value.childName,
       email: this.attendForm.value.email,
@@ -64,14 +64,16 @@ formControlsConfig = {
     }; 
 
     console.log('Form Values:', this.attendForm.value); 
-    this.http.post('http://localhost:8080/attending/add/:id', params).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.http.post(`http://localhost:8080/attending/add/${this.activityId}`, params).subscribe(
+    
+  (response) => {
+    console.log(response);
+  },
+  (error) => {
+    console.error(error);
+  }
+);
+
   }
 
   prepareFormValidation() {

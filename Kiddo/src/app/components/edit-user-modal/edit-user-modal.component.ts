@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { HttpClient } from '@angular/common/http';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-edit-user-modal',
@@ -36,6 +37,7 @@ export class EditUserModalComponent  implements OnInit {
     this.http.put(apiUrl, params).subscribe(
       (response) => {
         console.log('response');
+        this.renderer.setProperty(window, 'location', '/user');
       },
       (error) => {
         console.error('error');
@@ -52,7 +54,8 @@ export class EditUserModalComponent  implements OnInit {
     }
   }
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient,
+               private renderer: Renderer2 ) { }
 
   ngOnInit() {}
 

@@ -6,6 +6,7 @@ import { YourActivitiesService } from 'src/app/services/youractivities.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from 'src/app/services/userservice.service';
 import { UserInfo } from 'src/app/types/UserInfo';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -25,7 +26,8 @@ export class UserPage implements OnInit {
     private yourActivities: YourActivitiesService,
     private attendingService: AttendingService,
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { inputFields } from 'src/app/constants/AddInputFields';
 import { errorMessages } from 'src/app/constants/AddInputFieldsErrorMessages';
 import { ErrorMessages } from 'src/app/types/ErrorMessage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Renderer2 } from '@angular/core';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class AddActivityPage implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder,
-              private http: HttpClient) {}
+              private http: HttpClient,
+              private renderer: Renderer2) {}
 
   ngOnInit() {
     this.activityForm = this.formBuilder.group(this.formControlsConfig);
@@ -62,6 +64,7 @@ export class AddActivityPage implements OnInit {
     this.http.post('http://localhost:8080/activities/add', params).subscribe(
       (response) => {
         console.log(response);
+        this.renderer.setProperty(window, 'location', '/add-activity');
       },
       (error) => {
         console.error(error);

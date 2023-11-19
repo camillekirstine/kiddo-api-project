@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ActivityService } from 'src/app/services/activity.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { YourActivitiesService } from 'src/app/services/youractivities.service';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -40,7 +41,7 @@ export class ListComponent  implements OnInit {
   constructor(
     private youActivities: YourActivitiesService,
     private http: HttpClient,
-
+    private renderer: Renderer2,
     private activityService: ActivityService,
     private route: ActivatedRoute,
     private router: Router
@@ -60,6 +61,7 @@ export class ListComponent  implements OnInit {
         console.log('Deleted successfully');
         // Update the originalActivities array to remove the deleted activity
         this.originalActivities = this.originalActivities.filter(activity => activity.id !== activityId);
+        this.renderer.setProperty(window, 'location', '/user');
       },
       (error) => {
         console.error(error);
