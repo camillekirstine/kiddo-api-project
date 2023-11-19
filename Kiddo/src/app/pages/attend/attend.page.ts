@@ -51,11 +51,12 @@ formControlsConfig = {
   }
 
   makeHttpRequest(): void {
+
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const now = new Date();  
 
     const params = {
-      actId: this.activityId,
+      actId: Number(this.navParams.get('activityId')),
       parentName: this.attendForm.value.parentName,
       childName: this.attendForm.value.childName,
       email: this.attendForm.value.email,
@@ -67,6 +68,7 @@ formControlsConfig = {
     this.http.post(`http://localhost:8080/attending/add/${this.activityId}`, params).subscribe(
     
   (response) => {
+    this.activityId;
     console.log(response);
   },
   (error) => {

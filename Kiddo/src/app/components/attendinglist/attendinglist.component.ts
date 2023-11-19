@@ -52,7 +52,7 @@ export class AttendinglistComponent  implements OnInit {
   makeHttpRequest(activityId: number): void {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
   
-    this.http.delete(`http://localhost:8080/activities/delete/${activityId}`, { headers }).subscribe(
+    this.http.delete(`http://localhost:8080/attending/delete/${activityId}`, { headers }).subscribe(
       () => {
         console.log('Deleted successfully');
         // Update the originalActivities array to remove the deleted activity
