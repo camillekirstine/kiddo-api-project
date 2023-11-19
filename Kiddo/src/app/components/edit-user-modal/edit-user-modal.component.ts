@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-user-modal',
@@ -18,6 +19,21 @@ export class EditUserModalComponent  implements OnInit {
   }
 
   confirm() {
+    const apiUrl = 'http://localhost:8080/users/update/:id'; 
+    const params = {
+      userName: this.name,
+      
+    }; 
+
+    this.http.put(apiUrl, params).subscribe(
+      (response) => {
+        console.log('response');
+      },
+      (error) => {
+        console.error('error');
+      }
+    ); 
+
     this.modal.dismiss(this.name, 'confirm');
   }
 
@@ -28,7 +44,7 @@ export class EditUserModalComponent  implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor( private http: HttpClient) { }
 
   ngOnInit() {}
 
